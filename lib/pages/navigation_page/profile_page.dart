@@ -10,6 +10,18 @@ class ProfilePage extends StatefulWidget {
 
 class _ProfilePageState extends State<ProfilePage> {
 
+  void logOut() async{
+    showDialog(context: context, builder: (context){
+      return const Center(
+        child: CircularProgressIndicator(),
+      );
+    });
+
+    FirebaseAuth.instance.signOut();
+
+    Navigator.pop(context);
+  }
+
   @override
   Widget build(BuildContext context) {
     final user = FirebaseAuth.instance.currentUser!;
@@ -21,7 +33,7 @@ class _ProfilePageState extends State<ProfilePage> {
 
     return SafeArea(
       child: Scaffold(
-        backgroundColor: const Color(0xff131417),
+        backgroundColor: const Color(0xff222831),
         body: SingleChildScrollView(
           child: SizedBox(
             width: myWeight,
@@ -31,7 +43,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 children: [
                   Container(
                     decoration: const BoxDecoration(
-                      color: Color(0xff2b2b2b),
+                      color: Color(0xff393E46),
                       borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(10),
                           topRight: Radius.circular(10))
@@ -39,15 +51,16 @@ class _ProfilePageState extends State<ProfilePage> {
                     height: 150,
                     child: Row(
                       children: [
-                        const Expanded(
+                         const Expanded(
                           flex: 1,
                           child: SizedBox(
-                            height: 100,
-                            child: Center(
-                              child: CircleAvatar(
-                                backgroundColor: Color(0xff273238),
-
-                              ),
+                            height: 60,
+                            width: 60,
+                            child: CircleAvatar(
+                              backgroundImage:
+                              NetworkImage("https://picsum.photos/500/300"),
+                              maxRadius: 15,
+                              minRadius: 15,
                             ),
                           ),
                         ),
@@ -64,7 +77,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                     color: Colors.white70
                                 ),
                                 ),
-                                SizedBox(height: 10,),
+                                const SizedBox(height: 10,),
                                 const Text('Green University of Bangladesh',
                                   style: TextStyle(
                                       fontSize: 15,
@@ -72,8 +85,8 @@ class _ProfilePageState extends State<ProfilePage> {
                                       color: Colors.white70
                                   ),
                                 ),
-                                SizedBox(height: 10,),
-                                Text(user.email!, style: TextStyle(color: Colors.green),),
+                                const SizedBox(height: 10,),
+                                Text(user.email!, style: const TextStyle(color: Colors.green),),
                               ],
                             ))
                       ],
@@ -85,7 +98,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   // Content Section
                   Container(
                     decoration: const BoxDecoration(
-                      color: Color(0xff2b2b2b),
+                      color: Color(0xff393E46),
                       borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(10),
                           topRight: Radius.circular(10))
@@ -154,9 +167,11 @@ class _ProfilePageState extends State<ProfilePage> {
                             width: myWeight * 0.9,
                           ),
                         ),
+
+                        ElevatedButton(onPressed: logOut,
+                            child: Text("LogOut"))
                       ],
                     )
-
                   ),
 
                 ],

@@ -1,6 +1,7 @@
-import 'package:computer_science_in_bangla/pages/explore_courses_page.dart';
-import 'package:computer_science_in_bangla/pages/home_page.dart';
-import 'package:computer_science_in_bangla/pages/profile_page.dart';
+import 'package:computer_science_in_bangla/pages/navigation_page/Courses.dart';
+import 'package:computer_science_in_bangla/pages/navigation_page/explore_qs.dart';
+import 'package:computer_science_in_bangla/pages/navigation_page/home_page.dart';
+import 'package:computer_science_in_bangla/pages/navigation_page/profile_page.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 
@@ -19,6 +20,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
   List screen = [
     const HomePage(),
     const ExploreCourses(),
+    const Courses(),
     const ProfilePage(),
   ];
 
@@ -36,14 +38,14 @@ class _BottomNavBarState extends State<BottomNavBar> {
       bottomNavigationBar: Container(
         color: Colors.black,
         child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 8.0),
+          padding: const EdgeInsets.only(left: 10, right: 10),
           child: GNav(
             backgroundColor: Colors.black,
             color: Colors.white,
             activeColor: Colors.white,
             gap: 8,
             tabBackgroundColor: Colors.grey.shade800,
-            padding: const EdgeInsets.all(15),
+            padding: const EdgeInsets.all(10),
             tabs: const [
               GButton(
                 icon: Icons.home,
@@ -53,10 +55,10 @@ class _BottomNavBarState extends State<BottomNavBar> {
                 icon: Icons.star,
                 text: 'Explore',
               ),
-              // GButton(
-              //   icon: Icons.search,
-              //   text: 'Search',
-              // ),
+              GButton(
+                icon: Icons.menu_book_sharp,
+                text: 'Courses',
+              ),
               GButton(
                 icon: Icons.person,
                 text: 'Profile',
@@ -65,7 +67,8 @@ class _BottomNavBarState extends State<BottomNavBar> {
               onTabChange: (index) {
               setState(() {
               currentIndex = index;
-              });
+                }
+              );
              },
           ),
         ),

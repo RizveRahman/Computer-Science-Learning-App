@@ -48,9 +48,6 @@ class _RegisterPageState extends State<RegisterPage> {
 
       Navigator.pop(context);
     } on FirebaseAuthException catch (e) {
-
-
-
       showErrorMassage(e.code);
       Navigator.pop(context);
 
@@ -114,8 +111,6 @@ class _RegisterPageState extends State<RegisterPage> {
                     hintText: 'Confirm Password',
                     obscureText: true,
                   ),
-
-
 
                   const SizedBox(height: 25),
 

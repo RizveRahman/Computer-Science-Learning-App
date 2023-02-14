@@ -1,5 +1,5 @@
 import 'package:computer_science_in_bangla/components/bottom_nav.dart';
-import 'package:computer_science_in_bangla/pages/home_page.dart';
+import 'package:computer_science_in_bangla/pages/navigation_page/home_page.dart';
 import 'package:computer_science_in_bangla/pages/login_or_register.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
